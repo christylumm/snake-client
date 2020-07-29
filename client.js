@@ -13,9 +13,10 @@ const connect = function() {
     console.log('connection successful');
     conn.write('Name: CEL');
     
-    setInterval(() => {
+/*     setInterval(() => {
       conn.write("Move: up");
-    },500);
+      conn.write("Move: left");
+    },500); */
   })
 
   return conn;
