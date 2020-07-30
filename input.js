@@ -1,14 +1,14 @@
-const setupInput = function(connection) {
+let connection; 
+
+const setupInput = function(conn) {
+  connection = conn;
   const stdin = process.stdin;
   
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
   stdin.resume();
   
-  stdin.on('data', function(key) {
-    handleUserInput(key, connection);
-  });
-  return stdin;
+  return stdin.on('data', handleUserInput);;
 }
 
 
@@ -17,22 +17,22 @@ const setupInput = function(connection) {
  * Specifically, so that we can handle user input via stdin
  */
 
-const handleUserInput = function(key, conn) {
+const handleUserInput = function(key) {
   //WASD
   if (key === 'w') {
     conn.write("Move: up");
   }
 
   if (key === 'a') {
-    conn.write("Move: left");
+    connection.write("Move: left");
   }
 
   if (key === 's') {
-    conn.write("Move: down");
+    connection.write("Move: down");
   }
 
   if (key === 'd') {
-    conn.write("Move: right");
+    connection.write("Move: right");
   }
 
   if (key === '\u0003') {
@@ -40,3 +40,4 @@ const handleUserInput = function(key, conn) {
   }
 }
 
+module.exports = setupInput;

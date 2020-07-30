@@ -1,7 +1,7 @@
 //Establishes connection with the game server
 const net = require('net');
 
-const connect = function(setup) {
+const connect = function() {
   const conn = net.createConnection({
     host: '10.0.2.15',
     port: 50541
@@ -12,11 +12,6 @@ const connect = function(setup) {
   conn.on('connect', () => {
     console.log('connection successful');
     conn.write('Name: CEL');
-    setup(conn);
-/*     setInterval(() => {
-      conn.write("Move: up");
-      conn.write("Move: left");
-    },500); */
   })
 
   return conn;
