@@ -20,7 +20,7 @@ const setupInput = function(conn) {
 const handleUserInput = function(key) {
   //WASD
   if (key === 'w') {
-    conn.write("Move: up");
+    connection.write("Move: up");
   }
 
   if (key === 'a') {
@@ -33,6 +33,18 @@ const handleUserInput = function(key) {
 
   if (key === 'd') {
     connection.write("Move: right");
+  }
+
+  if (key === 'f') {
+    connection.write('Say: YAS');
+  }
+
+  if (key === 'e') {
+    connection.write('Say: WOO');
+  }
+
+  if (key === 'q') {
+    connection.write('Say: EYY')
   }
 
   if (key === '\u0003') {
